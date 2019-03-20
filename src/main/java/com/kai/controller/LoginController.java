@@ -5,6 +5,7 @@ import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.apache.shiro.subject.Subject;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -18,10 +19,10 @@ import com.kai.model.TUser;
 @RestController
 public class LoginController {
 	
-	/*@RequestMapping(value="/login",method=RequestMethod.GET)
+	@RequestMapping(value="/login",method=RequestMethod.GET)
 	public Object login() {
 		return "login";
-	}*/
+	}
 	/**
 	 * 登录
 	 * @author 郭广凯
@@ -29,7 +30,7 @@ public class LoginController {
 	 * @param user
 	 * @return
 	 */
-	@RequestMapping(value="/login")
+	@PostMapping("/login")
 	public Object login(TUser user) {
 		Subject subject = SecurityUtils.getSubject();
 		UsernamePasswordToken upt=new UsernamePasswordToken(user.getName(), user.getPwd(),true);
