@@ -1,7 +1,7 @@
 /*用户*/
-INSERT INTO t_user (id, name) VALUES (1, '张三');
-INSERT INTO t_user (id, name) VALUES (2, '李四');
-INSERT INTO t_user (id, name) VALUES (3, '王五');
+INSERT INTO t_user (id, name,pwd) VALUES (1, '张三','123');
+INSERT INTO t_user (id, name,pwd) VALUES (2, '李四','123');
+INSERT INTO t_user (id, name,pwd) VALUES (3, '王五','123');
 
 /*角色*/
 INSERT INTO t_role (id, role) VALUES (1, '经理');

@@ -17,5 +17,7 @@ public class TUser implements Serializable{
 	private Integer id;
 	
 	private String name;
+	
+	private String pwd;
 
 }

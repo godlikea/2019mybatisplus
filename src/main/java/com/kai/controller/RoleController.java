@@ -17,7 +17,12 @@ import lombok.extern.slf4j.Slf4j;
 @RestController
 @RequestMapping("/role")
 public class RoleController {
-	
+	/**
+	 * 获取所有角色对象
+	 * @author 郭广凯
+	 * @data 2019年3月20日上午9:08:31
+	 * @return
+	 */
 	@RequestMapping("/getRoleAll")
 	public Object getRoleAll() {
 		TRole tr=new TRole();
