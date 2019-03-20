@@ -58,7 +58,7 @@ public class ShiroConfiguration {
 		//首页
 		sffb.setSuccessUrl("/index");
 		//错误界面
-		sffb.setUnauthorizedUrl("/error");
+		sffb.setUnauthorizedUrl("/exe");
 		sffb.setFilterChainDefinitionMap(map);
 		return sffb;
 	}
