@@ -6,6 +6,7 @@ import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.apache.shiro.subject.Subject;
 import org.apache.shiro.util.ThreadContext;
+import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -36,10 +37,10 @@ public class LoginController {
 	@PostMapping("/login")
 	public Object login(TUser user) {
 		Subject subject = SecurityUtils.getSubject();
-		if((System.currentTimeMillis()-subject.getSession().getStartTimestamp().getTime())>=1000) {
+		/*if((System.currentTimeMillis()-subject.getSession().getStartTimestamp().getTime())>=1000) {
 			//移除线程中的subject
 			ThreadContext.remove(ThreadContext.SUBJECT_KEY);
-		}
+		}*/
 		UsernamePasswordToken upt=new UsernamePasswordToken(user.getName(), user.getPwd(),true);
 		subject.login(upt);
 		return "Login";

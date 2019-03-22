@@ -92,4 +92,36 @@ public class MyRealm extends AuthorizingRealm {
 		}
 	}
 
+	protected void clearCachedAuthorizationInfo(PrincipalCollection principals) {
+		super.clearCachedAuthorizationInfo(principals);
+	}
+
+	protected void doClearCache(PrincipalCollection principals) {
+		super.doClearCache(principals);
+	}
+	
+	/**
+	 * 自定义方法：清除所有 授权缓存
+	 */
+	public void clearAllCachedAuthorizationInfo() {
+	    getAuthorizationCache().clear();
+	}
+
+	/**
+	 * 自定义方法：清除所有 认证缓存
+	 */
+	public void clearAllCachedAuthenticationInfo() {
+	    getAuthenticationCache().clear();
+	}
+
+	/**
+	 * 自定义方法：清除所有的  认证缓存  和 授权缓存
+	 */
+	public void clearAllCache() {
+	    clearAllCachedAuthenticationInfo();
+	    clearAllCachedAuthorizationInfo();
+	}
+	
+	
+
 }
