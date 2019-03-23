@@ -80,13 +80,13 @@
        overflowToDisk="false"
        statistics="true">
 </cache>
-<cache name="shiro-activeSessionCache"
-           maxElementsInMemory="10000"
-           overflowToDisk="true"
-           eternal="true"
-           timeToLiveSeconds="0"
-           timeToIdleSeconds="0"
-           diskPersistent="true"
-           diskExpiryThreadIntervalSeconds="600"/>
+<cache name="ggk-session"
+       maxEntriesLocalHeap="2000"
+       eternal="false"
+       timeToIdleSeconds="0"
+       timeToLiveSeconds="0"
+       overflowToDisk="false"
+       statistics="true">
+</cache>
 
 </ehcache>

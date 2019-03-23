@@ -72,11 +72,11 @@ public class ShiroConfiguration {
 		securityManager.setRememberMeManager(getRememberMeManager());
 		return securityManager;
 	}
-	
+	@Bean 
 	public CookieRememberMeManager getRememberMeManager() {
 		CookieRememberMeManager crm=new CookieRememberMeManager();
 		crm.setCookie(rememberMeCookie());
-		//crm.setCipherKey(Base64.decode("4AvVhmFLUs0KTA3Kprsdag=="));
+		crm.setCipherKey(Base64.decode("4AvVhmFLUs0KTA3Kprsdag=="));
 		return crm;
 	}
 	/**
@@ -84,16 +84,16 @@ public class ShiroConfiguration {
 	 * @author ggk
 	 * @data 2019年3月22日上午10:31:36
 	 * @return
-	 */
+	 *//*
 	@Bean
 	public FormAuthenticationFilter formAuthenticationFilter() {
 		FormAuthenticationFilter faf=new FormAuthenticationFilter();
 		faf.setRememberMeParam("rememberMe");
 		return faf;
-	}
+	}*/
 	@Bean("rememberMeCookie")
 	public SimpleCookie  rememberMeCookie() {
-		SimpleCookie sc=new SimpleCookie();
+		SimpleCookie sc=new SimpleCookie("sessionOne"); 
 		sc.setHttpOnly(true);
 		sc.setPath("/");
 		sc.setMaxAge(2592000);
@@ -118,14 +118,15 @@ public class ShiroConfiguration {
 		map.put("/logout", "logout");
 		//对所有用户验证
 		//map.put("/**", "authc");
+		map.put("/login", "kickout,anon");
 		//其他资源都需要认证  authc 表示需要认证才能进行访问 user表示配置记住我或认证通过可以访问的地址
-		map.put("/**", "kickout,user");
 		//登录
 		sffb.setLoginUrl("/login");
 		//首页
 		sffb.setSuccessUrl("/index");
 		//错误界面
 		sffb.setUnauthorizedUrl("/exe");
+		map.put("/**", "kickout,user");
 		sffb.setFilterChainDefinitionMap(map);
 		return sffb;
 	}
@@ -194,10 +195,10 @@ public class ShiroConfiguration {
 		sc.setHttpOnly(true);
 		sc.setPath("/");
 		//-1 表示浏览器关闭 此cookie失效
-		sc.setMaxAge(-1);
+		sc.setMaxAge(1000*1800);
 		return sc;
 	}
-	
+	@Bean
 	public SessionManager getSessionManager() {
 		DefaultWebSessionManager sessionManager=new DefaultWebSessionManager();
 		Collection<SessionListener> listerners=new ArrayList<>();
@@ -208,7 +209,7 @@ public class ShiroConfiguration {
 		sessionManager.setCacheManager(ehCacheManager());
 		
 		//全局回话超时时间 默认30分钟
-		sessionManager.setGlobalSessionTimeout(1000*1200);
+		sessionManager.setGlobalSessionTimeout(1000*1800);
 		//是否开启删除无效的session 默认为true
 		sessionManager.setDeleteInvalidSessions(true);
 		//是否开启定时调度器进行检测过期session默认为true

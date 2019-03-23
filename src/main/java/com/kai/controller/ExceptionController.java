@@ -18,6 +18,6 @@ public class ExceptionController {
 		if(ex instanceof UnauthorizedException) {
 			return "当前用户无此权限";
 		}
-		return null;
+		return "请联系管理员";
 	}
 }

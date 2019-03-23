@@ -79,7 +79,7 @@ public class KickoutSessionControlFilter extends AccessControlFilter {
 			return true;
 		}
 		Session session = subject.getSession();
-		String name = ((TUser)subject.getPrincipal()).getName();
+		String name=(String)subject.getPrincipal();
 		Serializable id = session.getId();
 		//初始化队列放到缓存中
 		Deque<Serializable> deque = cache.get(name);

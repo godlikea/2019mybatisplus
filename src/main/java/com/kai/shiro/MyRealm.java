@@ -80,12 +80,12 @@ public class MyRealm extends AuthorizingRealm {
 	 */
 	protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {
 		if(token.getPrincipal()==null) {
-			return null;
+			throw new AuthenticationException();
 		}
 		String name = token.getPrincipal().toString();
 		TUser user = userMapper.selectOne(new QueryWrapper<TUser>().eq("name", name));
 		if(user ==null) {
-			return null;
+			throw new AuthenticationException();
 		}else {
 			SimpleAuthenticationInfo sai=new SimpleAuthenticationInfo(name,user.getPwd(),getName());
 			return sai;
