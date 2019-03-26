@@ -1,7 +1,5 @@
 package com.kai.controller;
 
-import java.util.List;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,8 +18,9 @@ import reactor.core.publisher.Flux;
 public class WebFluxController {
 	
 	@GetMapping(value="/reactive")
-	public Flux<List<String>> getAll(){
+	public Flux<String> getAll(){
 		log.info("==============");
-		return null;
+		Flux<String> flux=Flux.just("a","b","c");
+		return flux;
 	}
 }
