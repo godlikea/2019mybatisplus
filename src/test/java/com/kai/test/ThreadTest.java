@@ -1,5 +1,8 @@
 package com.kai.test;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Random;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
@@ -33,7 +36,7 @@ public class ThreadTest {
 		Mono.fromCallable(()->getStringSync())
 		.subscribeOn(Schedulers.elastic())
 		.subscribe(System.out::println,null,countDownLatch::countDown);
-		countDownLatch.await(10,TimeUnit.SECONDS);
+		countDownLatch.await(100,TimeUnit.SECONDS);
 	}
 	@Test
 	public void testException() {
@@ -57,7 +60,6 @@ public class ThreadTest {
 				try {
 					TimeUnit.SECONDS.sleep(1);
 				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 				System.out.println("Get value["+value+"]");
@@ -65,6 +67,11 @@ public class ThreadTest {
 			}
 			
 		});
+	}
+	@Test
+	public void testTimeC() {
+		LocalDateTime now = LocalDateTime.now();
+		System.out.println(now.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
 	}
 	
 	
