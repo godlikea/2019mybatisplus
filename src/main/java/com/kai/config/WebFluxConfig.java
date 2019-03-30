@@ -14,9 +14,9 @@ import org.springframework.web.server.WebHandler;
  * @author ggk
  * @data 2019年3月25日上午10:49:20
  */
-@Configuration
-@ComponentScan
-@EnableWebFlux
+//@Configuration
+//@ComponentScan
+//@EnableWebFlux
 public class WebFluxConfig implements WebFluxConfigurer {
 	
 	@Bean

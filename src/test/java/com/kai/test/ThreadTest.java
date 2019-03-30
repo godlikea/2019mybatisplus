@@ -74,6 +74,15 @@ public class ThreadTest {
 		System.out.println(now.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
 	}
 	
+	public void testF() throws Exception {
+		//反射工具类
+		Class clazz = Class.forName("com.kai.test.Student");
+	}
+	
+	public void factory(String className) throws Exception {
+		Class clazz = Class.forName("com.kai.test.Student");
+	}
+	
 	
 	
 	
